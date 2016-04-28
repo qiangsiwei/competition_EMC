@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Correlated Factors</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-inverse" role="navigation">
+       <div class="navbar-header">
+          <a class="navbar-brand" href="./index.html">EMC open data competition</a>
+       </div>
+       <div>
+          <ul class="nav navbar-nav">
+             <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                   Data Analysis <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                   <li><a href="./timeline_analysis.html">Timeline Analysis</a></li>
+                   <li><a href="./canteen_statistics.html">Canteen Statistics</a></li>
+                   <li><a href="./user_preference.html">User Preference</a></li>
+                   <li><a href="./user_hehavior.html">User Behavior</a></li>
+                   <li><a href="./correlated_factors.html">Correlated Factors</a></li>
+                </ul>
+             </li>
+             <li class="active"><a href="./prediction.html">Prediction</a></li>
+             <li class="active"><a href="./downloads.html">Downloads</a></li>
+          </ul>
+       </div>
+    </nav>
+    <div id="main1" class="main" style='height:400px'></div>
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script src="http://echarts.baidu.com/doc/example/www2/js/echarts-all.js"></script>
+    <script type="text/javascript">
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar',
+                'echarts/chart/line'
+            ],
+            function (ec) {
+                var option1 = {
+                    title : {
+                        text: '外部因素',
+                        x:'center'
+                    },
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer : {
+                            type : 'shadow'
+                        },
+                    },
+                    legend: {
+                        data:['温度','降水'],
+                        y:40
+                    },
+                    grid: {
+                        x: 80,
+                        y: 80,
+                        x2:80,
+                        y2:30
+                    },
+                    toolbox: {
+                        orient : 'vertical',
+                        y:'center',
+                        show : true,
+                        feature : {
+                            mark : {show: true},
+                            dataView : {show: true, readOnly: false},
+                            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                            restore : {show: true},
+                            saveAsImage : {show: true}
+                        }
+                    },
+                    calculable: true,
+                    xAxis : [
+                        {
+                            type: 'category',
+                            name:'温度',
+                            data: ['5-9/℃','10-14/℃','15-19/℃','20-24/℃','25-30/℃']
+                        },
+                        {
+                            type: 'category',
+                            name:'降水量',
+                            data: ['0/mm','1-5/mm','6-20/mm','21-100/mm','101-500/mm']
+                        }
+                    ],
+                    yAxis: [
+                        {
+                            type : 'value',
+                            name: '客流量'
+                        }
+                    ],
+                    series : [
+                        {
+                            name:'温度',
+                            type:'bar',
+                            stack:'总量',
+                            data:[30691, 34773, 38114, 44153, 36019],            
+                            markPoint : {
+                                data : [
+                                    {type : 'max', name: '最大值'},
+                                    {type : 'min', name: '最小值'}
+                                ]
+                            },
+                            markLine : {
+                                data : [
+                                    {type : 'average', name: '平均值'}
+                                ]
+                            }
+                        },
+                        {
+                            name:'降水',
+                            type:'line',
+                            stack:'总量',
+                            data:[47197, 45069, 44664, 43871, 41957],            
+                            markPoint : {
+                                data : [
+                                    {type : 'max', name: '最大值'},
+                                    {type : 'min', name: '最小值'}
+                                ]
+                            },
+                            markLine : {
+                                data : [
+                                    {type : 'average', name: '平均值'}
+                                ]
+                            }
+                        }
+                    ]
+                };
+
+                myChart1 = echarts.init(document.getElementById('main1'),'macarons');
+                myChart1.setOption(option1);
+            }
+        );
+    </script>
+</body>

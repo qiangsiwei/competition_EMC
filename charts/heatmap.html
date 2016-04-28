@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hIlimGuvEfHV41Aw885gONzB"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+    <title>heatmap</title>
+    <style type="text/css">
+		ul,li{list-style: none;margin:0;padding:0;float:left;}
+		html{height:100%}
+		body{height:100%;margin:0px;padding:0px;font-family:"微软雅黑";}
+		#container{height:350px;width:500px;}
+		#r-result{width:100%;}
+    </style>	
+</head>
+<body>
+	<div id="container"></div>
+</body>
+</html>
+<script type="text/javascript">
+    var map = new BMap.Map("container");
+    var point = new BMap.Point(121.443, 31.032);
+    map.centerAndZoom(point, 15);
+    map.enableScrollWheelZoom();
+    map.addControl(new BMap.NavigationControl()); 
+    var points =[
+    {"lng":121.438123,"lat":31.028483,"count":90},
+    {"lng":121.438323,"lat":31.028683,"count":90},
+    {"lng":121.442193,"lat":31.029357,"count":90},
+    {"lng":121.442660,"lat":31.029643,"count":90},
+    {"lng":121.442903,"lat":31.029048,"count":90},
+    {"lng":121.443208,"lat":31.029512,"count":90},
+    {"lng":121.439588,"lat":31.033063,"count":80},
+    {"lng":121.439688,"lat":31.033163,"count":80},
+    {"lng":121.433676,"lat":31.031593,"count":70},
+    {"lng":121.433776,"lat":31.031693,"count":70},
+    {"lng":121.447987,"lat":31.030131,"count":40},
+    {"lng":121.451437,"lat":31.036412,"count":20},
+    {"lng":121.439076,"lat":31.026974,"count":30},
+    ]
+    if(!isSupportCanvas()){
+    	alert('热力图目前只支持有canvas支持的浏览器,您所使用的浏览器不能使用热力图功能~')
+    }
+	heatmapOverlay = new BMapLib.HeatmapOverlay({"radius":20});
+	map.addOverlay(heatmapOverlay);
+	heatmapOverlay.setDataSet({data:points,max:100});
+    heatmapOverlay.show();
+    function setGradient(){
+     	var gradient = {};
+     	var colors = document.querySelectorAll("input[type='color']");
+     	colors = [].slice.call(colors,0);
+     	colors.forEach(function(ele){
+			gradient[ele.getAttribute("data-key")] = ele.value; 
+     	});
+        heatmapOverlay.setOptions({"gradient":gradient});
+    }
+    function isSupportCanvas(){
+        var elem = document.createElement('canvas');
+        return !!(elem.getContext && elem.getContext('2d'));
+    }
+    var marker1 = new BMap.Marker(new BMap.Point(121.438123,31.028483));
+    var marker2 = new BMap.Marker(new BMap.Point(121.442693,31.029357));
+    var marker3 = new BMap.Marker(new BMap.Point(121.439588,31.033063));
+    var marker4 = new BMap.Marker(new BMap.Point(121.433676,31.031593));
+    var marker5 = new BMap.Marker(new BMap.Point(121.447987,31.030131));
+    var marker6 = new BMap.Marker(new BMap.Point(121.451437,31.036412));
+    var marker7 = new BMap.Marker(new BMap.Point(121.439076,31.026974));
+    marker1.setLabel(new BMap.Label("一餐",{offset:new BMap.Size(20,-10)}));
+    marker2.setLabel(new BMap.Label("二餐",{offset:new BMap.Size(20,-10)}));
+    marker3.setLabel(new BMap.Label("三餐",{offset:new BMap.Size(20,-10)}));
+    marker4.setLabel(new BMap.Label("四餐",{offset:new BMap.Size(20,-10)}));
+    marker5.setLabel(new BMap.Label("五餐",{offset:new BMap.Size(20,-10)}));
+    marker6.setLabel(new BMap.Label("六餐",{offset:new BMap.Size(20,-10)}));
+    marker7.setLabel(new BMap.Label("哈乐",{offset:new BMap.Size(20,-10)}));
+    map.addOverlay(marker1);
+    map.addOverlay(marker2);
+    map.addOverlay(marker3);
+    map.addOverlay(marker4);
+    map.addOverlay(marker5);
+    map.addOverlay(marker6);
+    map.addOverlay(marker7);
+</script>

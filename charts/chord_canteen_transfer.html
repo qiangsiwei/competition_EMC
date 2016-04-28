@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+    <div id="main" class="main" style='height:500px'></div>
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script src="http://echarts.baidu.com/doc/example/www2/js/echarts-all.js"></script>
+    <script type="text/javascript">
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        require(
+            [
+                'echarts',
+                'echarts/chart/chord',
+                'echarts/chart/force'
+            ],
+            function (ec) {
+                var myChart = ec.init(document.getElementById('main'));
+                var option = {
+                    title : {
+                        text: '食堂间跳转',
+                        x:'right',
+                        y:'bottom'
+                    },
+                    tooltip : {
+                        trigger: 'item',
+                        formatter: function (params) {
+                            if (params.indicator2) {
+                                return params.value.weight;
+                            } else {
+                                return params.name
+                            }
+                        }
+                    },
+                    toolbox: {
+                        show : true,
+                        feature : {
+                            restore : {show: true},
+                            magicType: {show: true, type: ['force', 'chord']},
+                            saveAsImage : {show: true}
+                        }
+                    },
+                    legend: {
+                        x: 'left',
+                        data:['一餐','二餐','三餐','四餐','五餐','六餐','哈乐']
+                    },
+                    series : [
+                        {
+                            type:'chord',
+                            sort : 'ascending',
+                            sortSub : 'descending',
+                            showScale : true,
+                            showScaleText : true,
+                            data : [
+                                {name : '一餐'},
+                                {name : '二餐'},
+                                {name : '三餐'},
+                                {name : '四餐'},
+                                {name : '五餐'},
+                                {name : '六餐'},
+                                {name : '哈乐'}
+                            ],
+                            itemStyle : {
+                                normal : {
+                                    label : {
+                                        show : false
+                                    }
+                                }
+                            },
+                            matrix : [
+                                [666788,204032,81617,87937,22326,7365,47816],
+                                [205812,1594877,170453,119148,62005,18009,48593],
+                                [83492,169558,560675,68630,25929,18885,13376],
+                                [88939,117195,72494,515504,28340,19659,8020],
+                                [20779,61336,25154,30443,70833,3248,2488],
+                                [7379,18478,18319,19984,3345,43059,429],
+                                [43088,51859,13947,8146,2523,467,71419]
+                            ]
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+            }
+        );
+    </script>
+</body>

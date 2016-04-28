@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+    <div id="main" style="height:400px"></div>
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        require(
+            [
+                'echarts',
+                'echarts/chart/force',
+                'echarts/chart/chord'
+            ],
+            function (ec) {
+                var myChart = ec.init(document.getElementById('main'));
+                var nodes = [
+                {name:'ROOT',value:5,id:0,depth:0,category:2},
+                {name:'一餐   日均客流9132',value:3044,id:1,depth:1,category:1},
+                {name:'二餐   日均客流18108',value:6036,id:2,depth:1,category:1},
+                {name:'三餐   日均客流7690',value:2563,id:3,depth:1,category:1},
+                {name:'四餐   日均客流6959',value:2319,id:4,depth:1,category:1},
+                {name:'五餐   日均客流1754',value:584,id:5,depth:1,category:1},
+                {name:'六餐   日均客流904',value:301,id:6,depth:1,category:1},
+                {name:'哈乐   日均客流1564',value:521,id:7,depth:1,category:1},
+                {name:'一餐教工定额卡  日均客流0',value:0,id:8,depth:2,category:0},
+                {name:'一餐教工餐厅   日均客流540',value:540,id:9,depth:2,category:0},
+                {name:'一餐清真 日均客流374',value:374,id:10,depth:2,category:0},
+                {name:'中式点心 日均客流1845',value:1845,id:11,depth:2,category:0},
+                {name:'供应点1 日均客流1',value:1,id:12,depth:2,category:0},
+                {name:'吉祥小厨 日均客流1112',value:1112,id:13,depth:2,category:0},
+                {name:'川菜   日均客流531',value:531,id:14,depth:2,category:0},
+                {name:'松叶蔬菜 日均客流0',value:0,id:15,depth:2,category:0},
+                {name:'梦园面包房2   日均客流548',value:548,id:16,depth:2,category:0},
+                {name:'海派食府 日均客流466',value:466,id:17,depth:2,category:0},
+                {name:'淮扬快餐 日均客流2057',value:2057,id:18,depth:2,category:0},
+                {name:'面包房1 日均客流2',value:2,id:19,depth:2,category:0},
+                {name:'顺日北小吃    日均客流1604',value:1604,id:20,depth:2,category:0},
+                {name:'高知餐厅 日均客流46',value:46,id:21,depth:2,category:0},
+                {name:'闵行三餐时光咖啡 日均客流29',value:29,id:22,depth:2,category:0},
+                {name:'闵行第三餐饮外婆桥    日均客流2134',value:2134,id:23,depth:2,category:0},
+                {name:'闵行第三餐饮学生餐厅   日均客流5088',value:5088,id:24,depth:2,category:0},
+                {name:'闵行第三餐饮清真餐厅   日均客流437',value:437,id:25,depth:2,category:0},
+                {name:'上海快餐 日均客流3251',value:3251,id:26,depth:2,category:0},
+                {name:'上海快餐定额卡  日均客流0',value:0,id:27,depth:2,category:0},
+                {name:'二大楼教工餐厅  日均客流927',value:927,id:28,depth:2,category:0},
+                {name:'大众餐厅 日均客流1668',value:1668,id:29,depth:2,category:0},
+                {name:'川味点心 日均客流3128',value:3128,id:30,depth:2,category:0},
+                {name:'教育超市 日均客流1674',value:1674,id:31,depth:2,category:0},
+                {name:'新疆餐厅 日均客流415',value:415,id:32,depth:2,category:0},
+                {name:'江南小吃 日均客流2164',value:2164,id:33,depth:2,category:0},
+                {name:'绿园餐厅 日均客流2331',value:2331,id:34,depth:2,category:0},
+                {name:'西北面点 日均客流1882',value:1882,id:35,depth:2,category:0},
+                {name:'西式快餐 日均客流663',value:663,id:36,depth:2,category:0},
+                {name:'一楼快餐厅    日均客流413',value:413,id:37,depth:2,category:0},
+                {name:'中西餐厅 日均客流24',value:24,id:38,depth:2,category:0},
+                {name:'二楼快餐厅    日均客流874',value:874,id:39,depth:2,category:0},
+                {name:'二楼面馆 日均客流442',value:442,id:40,depth:2,category:0},
+                {name:'六餐东一楼餐厅  日均客流699',value:699,id:41,depth:2,category:0},
+                {name:'六餐伊诺咖啡   日均客流7',value:7,id:42,depth:2,category:0},
+                {name:'六餐面馆 日均客流197',value:197,id:43,depth:2,category:0},
+                {name:'哈乐之家 日均客流1564',value:1564,id:44,depth:2,category:0},
+                {name:'东餐厅  日均客流1259',value:1259,id:45,depth:2,category:0},
+                {name:'串串烧  日均客流158',value:158,id:46,depth:2,category:0},
+                {name:'吉姆丽德 日均客流19',value:19,id:47,depth:2,category:0},
+                {name:'后发定额卡（第四餐饮）  日均客流0',value:0,id:48,depth:2,category:0},
+                {name:'土豆粉  日均客流176',value:176,id:49,depth:2,category:0},
+                {name:'教工餐厅 日均客流816',value:816,id:50,depth:2,category:0},
+                {name:'炒面   日均客流147',value:147,id:51,depth:2,category:0},
+                {name:'炖品   日均客流464',value:464,id:52,depth:2,category:0},
+                {name:'点心   日均客流370',value:370,id:53,depth:2,category:0},
+                {name:'烤肉   日均客流339',value:339,id:54,depth:2,category:0},
+                {name:'烧腊饭  日均客流195',value:195,id:55,depth:2,category:0},
+                {name:'甜点   日均客流69',value:69,id:56,depth:2,category:0},
+                {name:'百味林  日均客流32',value:32,id:57,depth:2,category:0},
+                {name:'笼仔饭  日均客流81',value:81,id:58,depth:2,category:0},
+                {name:'粉面饭  日均客流129',value:129,id:59,depth:2,category:0},
+                {name:'粥档   日均客流515',value:515,id:60,depth:2,category:0},
+                {name:'苏记麻辣烫    日均客流39',value:39,id:61,depth:2,category:0},
+                {name:'西餐厅  日均客流84',value:84,id:62,depth:2,category:0},
+                {name:'面点   日均客流1544',value:1544,id:63,depth:2,category:0},
+                {name:'风味煲仔饭    日均客流279',value:279,id:64,depth:2,category:0},
+                {name:'麻辣烫  日均客流231',value:231,id:65,depth:2,category:0},
+                ];
+                var links = [
+                {source:0,target:1,weight:1},
+                {source:0,target:2,weight:1},
+                {source:0,target:3,weight:1},
+                {source:0,target:4,weight:1},
+                {source:0,target:5,weight:1},
+                {source:0,target:6,weight:1},
+                {source:0,target:7,weight:1},
+                {source:1,target:8,weight:1},
+                {source:1,target:9,weight:1},
+                {source:1,target:10,weight:1},
+                {source:1,target:11,weight:1},
+                {source:1,target:12,weight:1},
+                {source:1,target:13,weight:1},
+                {source:1,target:14,weight:1},
+                {source:1,target:15,weight:1},
+                {source:1,target:16,weight:1},
+                {source:1,target:17,weight:1},
+                {source:1,target:18,weight:1},
+                {source:1,target:19,weight:1},
+                {source:1,target:20,weight:1},
+                {source:1,target:21,weight:1},
+                {source:3,target:22,weight:1},
+                {source:3,target:23,weight:1},
+                {source:3,target:24,weight:1},
+                {source:3,target:25,weight:1},
+                {source:2,target:26,weight:1},
+                {source:2,target:27,weight:1},
+                {source:2,target:28,weight:1},
+                {source:2,target:29,weight:1},
+                {source:2,target:30,weight:1},
+                {source:2,target:31,weight:1},
+                {source:2,target:32,weight:1},
+                {source:2,target:33,weight:1},
+                {source:2,target:34,weight:1},
+                {source:2,target:35,weight:1},
+                {source:2,target:36,weight:1},
+                {source:5,target:37,weight:1},
+                {source:5,target:38,weight:1},
+                {source:5,target:39,weight:1},
+                {source:5,target:40,weight:1},
+                {source:6,target:41,weight:1},
+                {source:6,target:42,weight:1},
+                {source:6,target:43,weight:1},
+                {source:7,target:44,weight:1},
+                {source:4,target:45,weight:1},
+                {source:4,target:46,weight:1},
+                {source:4,target:47,weight:1},
+                {source:4,target:48,weight:1},
+                {source:4,target:49,weight:1},
+                {source:4,target:50,weight:1},
+                {source:4,target:51,weight:1},
+                {source:4,target:52,weight:1},
+                {source:4,target:53,weight:1},
+                {source:4,target:54,weight:1},
+                {source:4,target:55,weight:1},
+                {source:4,target:56,weight:1},
+                {source:4,target:57,weight:1},
+                {source:4,target:58,weight:1},
+                {source:4,target:59,weight:1},
+                {source:4,target:60,weight:1},
+                {source:4,target:61,weight:1},
+                {source:4,target:62,weight:1},
+                {source:4,target:63,weight:1},
+                {source:4,target:64,weight:1},
+                {source:4,target:65,weight:1},
+                ];
+                var constMinRadius = 1;
+                var constMaxRadius = 20;
+                option = {
+                    title : {
+                        text: '餐厅客流',
+                        x:'right',
+                        y:'bottom'
+                    },
+                    tooltip : {
+                        trigger: 'item',
+                        formatter: '{a} : {b}'
+                    },
+                    toolbox: {
+                        show : true,
+                        feature : {
+                            restore : {show: true},
+                            magicType: {show: true, type: ['force', 'chord']},
+                            saveAsImage : {show: true}
+                        }
+                    },
+                    legend: {
+                        x: 'left',
+                        data:['Window','Canteen', 'ROOT']
+                    },
+                    series : [
+                        {
+                            type:'force',
+                            name : "name",
+                            ribbonType: false,
+                            categories : [
+                                {
+                                    name: 'Window'
+                                },
+                                {
+                                    name: 'Canteen'
+                                },
+                                {
+                                    name: 'ROOT'
+                                }
+                            ],
+                            itemStyle: {
+                                normal: {
+                                    label: {
+                                        show: false
+                                    },
+                                    nodeStyle : {
+                                        brushType : 'both',
+                                        borderColor : 'rgba(255,215,0,0.6)',
+                                        borderWidth : 1
+                                    }
+                                }
+                            },
+                            minRadius : constMinRadius,
+                            maxRadius : constMaxRadius,
+                            coolDown: 0.995,
+                            steps: 10,
+                            nodes : nodes,
+                            links : links,
+                            steps: 1
+                        }
+                    ]
+                };
+                myChart.setOption(option); 
+            }
+        );
+    </script>
+</body>

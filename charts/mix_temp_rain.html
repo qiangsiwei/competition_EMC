@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+
+<body>
+    <div id="main" style="height:600px"></div>
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar',
+                'echarts/chart/line'
+            ],
+            function (ec) {
+                var myChart = ec.init(document.getElementById('main'));
+                var option = {
+				    title : {
+				        text: '外部因素',
+				    },
+				    tooltip : {
+				        trigger: 'axis',
+				        axisPointer : {
+				            type : 'shadow'
+				        },
+				    },
+				    legend: {
+				        data:['温度','降水']
+				    },
+				    toolbox: {
+				        show : true,
+				        feature : {
+				            mark : {show: true},
+				            dataView : {show: true, readOnly: false},
+				            magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+				            restore : {show: true},
+				            saveAsImage : {show: true}
+				        }
+				    },
+				    calculable: true,
+				    xAxis : [
+				        {
+				            type: 'category',
+				            data: ['5-9','10-14','15-19','20-24','25-30']
+				        },
+				        {
+				            type: 'category',
+				            data: ['0','1-5','6-20','21-100','101-6']
+				        }
+				    ],
+				    yAxis: [
+				        {
+				            type : 'value'
+				        }
+				    ],
+				    series : [
+				        {
+				            name:'温度',
+				            type:'bar',
+				            stack:'总量',
+				            data:[30691, 34773, 38114, 44153, 36019],            
+				            markPoint : {
+				                data : [
+				                    {type : 'max', name: '最大值'},
+				                    {type : 'min', name: '最小值'}
+				                ]
+				            },
+				            markLine : {
+				                data : [
+				                    {type : 'average', name: '平均值'}
+				                ]
+            				}
+				        },
+				        {
+				            name:'降水',
+				            type:'line',
+				            stack:'总量',
+				            data:[47197, 45069, 44664, 43871, 41957],            
+				            markPoint : {
+				                data : [
+				                    {type : 'max', name: '最大值'},
+				                    {type : 'min', name: '最小值'}
+				                ]
+				            },
+				            markLine : {
+				                data : [
+				                    {type : 'average', name: '平均值'}
+				                ]
+            				}
+				        }
+				    ]
+				};
+                myChart.setOption(option); 
+            }
+        );
+    </script>
+</body>

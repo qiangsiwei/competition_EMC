@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px"></div>
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie',
+                'echarts/chart/funnel'
+
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'),'macarons'); 
+                
+                var option = {
+    timeline : {
+        data : ['Canteen 1','Canteen 2','Canteen 3','Canteen 4','Canteen 5','Canteen 6','Canteen 7'
+        ],
+        label: {
+    show: true,
+    interval: 'auto',
+    rotate: 0,
+    formatter: null,
+    textStyle: {
+        color: '#333'
+    }
+}  
+    },
+    options : [
+        {
+            title : {
+                text: '各食堂各年级人数所占比例',
+            },
+            tooltip : {
+                trigger: 'item',
+                formatter: "{a} <br/>{b} : {c} ({d}%)"
+            },
+            legend: {
+                data:['大一','大二','大三','大四','硕士','博士']
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {
+                        show: true, 
+                        type: ['pie', 'funnel'],
+                    },
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            series : [
+                {
+                    name:'一餐',
+                    type:'pie',
+                    center: ['50%', '45%'],
+                    radius: '50%',
+                    data:[
+                        {value: 19,  name:'大一'},
+                        {value: 20,  name:'大二'},
+                        {value: 19,  name:'大三'},
+                        {value: 5  ,name:'大四'},
+                        {value:19,name:'硕士'},
+                        {value:15,name:'博士'}
+                    ]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'二餐',
+                    type:'pie',
+                    data:[
+                        {value: 7,  name:'大一'},
+                        {value: 21,  name:'大二'},
+                        {value: 9,  name:'大三'},
+                        {value: 21  ,name:'大四'},
+                        {value:29,name:'硕士'},
+                        {value:10,name:'博士'}
+                    ]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'三餐',
+                    type:'pie',
+                    data:[
+                        {value: 41,  name:'大一'},
+                        {value: 5,  name:'大二'},
+                        {value: 4,  name:'大三'},
+                        {value: 2  ,name:'大四'},
+                        {value:30,name:'硕士'},
+                        {value:15,name:'博士'}
+                    ]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'四餐',
+                    type:'pie',
+                    data:[
+                        {value: 4,  name:'大一'},
+                        {value: 4,  name:'大二'},
+                        {value: 2,  name:'大三'},
+                        {value: 2  ,name:'大四'},
+                        {value:51,name:'硕士'},
+                        {value:35,name:'博士'}
+                    ]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'五餐',
+                    type:'pie',
+                    data:[
+                        {value: 4,  name:'大一'},
+                        {value: 3,  name:'大二'},
+                        {value: 4,  name:'大三'},
+                        {value: 6  ,name:'大四'},
+                        {value:50,name:'硕士'},
+                        {value:30,name:'博士'}
+                    ]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'六餐',
+                    type:'pie',
+                    data:[
+                        {value: 2,  name:'大一'},
+                        {value: 1,  name:'大二'},
+                        {value: 1,  name:'大三'},
+                        {value: 2  ,name:'大四'},
+                        {value:46,name:'硕士'},
+                        {value:46,name:'博士'}
+                    ]
+                }
+            ]
+        },
+        {
+            series : [
+                {
+                    name:'哈乐',
+                    type:'pie',
+                    data:[
+                        {value: 11,  name:'大一'},
+                        {value: 13,  name:'大二'},
+                        {value: 61,  name:'大三'},
+                        {value: 5  ,name:'大四'},
+                        {value:4,name:'硕士'},
+                        {value:2,name:'博士'}
+                    ]
+                }
+            ]
+        },
+
+    ]
+};
+                    
+                    
+        
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+    </script>
+</body>

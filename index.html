@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>EMC competition</title>
+   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+   <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse" role="navigation">
+   <div class="navbar-header">
+      <a class="navbar-brand" href="#">EMC open data competition</a>
+   </div>
+   <div>
+      <ul class="nav navbar-nav">
+         <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+               Data Analysis <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+               <li><a href="http://202.120.32.9:8080/EMC/timeline_analysis.html">Timeline Analysis</a></li>
+               <li><a href="http://202.120.32.9:8080/EMC/canteen_statistics.html">Canteen Statistics</a></li>
+               <li><a href="http://202.120.32.9:8080/EMC/user_preference.html">User Preference</a></li>
+               <li><a href="http://202.120.32.9:8080/EMC/user_hehavior.html">User Behavior</a></li>
+               <li><a href="http://202.120.32.9:8080/EMC/correlated_factors.html">Correlated Factors</a></li>
+            </ul>
+         </li>
+         <li class="active"><a href="http://202.120.32.9:8080/EMC/prediction.html">Prediction</a></li>
+         <li class="active"><a href="http://202.120.32.9:8080/EMC/downloads.html">Downloads</a></li>
+      </ul>
+   </div>
+</nav>
+<div align="center">
+   <div class="container">
+      <div class="content-box" style="background:url(./pics/heading.jpg) no-repeat center;background-size:cover;color:#eee;border-radius:10px;">
+         <div style="text-align:center;margin-top:10px;">
+            <h1>EMC杯智慧校园开放数据大赛</h1> 
+            <table style="text-align:left">
+            <tr><td>主办单位：</td><td>交大网络信息中心</td></tr>
+            <tr><td>赞助单位：</td><td>EMC卓越研发集团</td></tr>
+            <tr><td>指导单位：</td><td>交大学生工作指导委员会</td></tr>
+            <tr><td>合作机构：</td><td>上海气象局、上海交大后勤集团</td></tr>
+            <tr><td>承办单位：</td><td>Kesci校园比赛平台</td></tr>
+            <tr><td>协办单位：</td><td>电院学生会、交大数据分析俱乐部</td></tr>
+            </table> 
+         </div>
+      </div>
+   </div>
+   <div class="center-block" style="width:80%;max-width:800px;font-size:1.1em;line-height:1.2em;">
+      <h3>比赛介绍</h3>
+      <ul style="text-align:left">
+      <li>面对社会、科研、企业对于大数据人才的紧迫需求，上海交大网络信息中心联合EMC卓越研究集团，于2015年4月共同举办“EMC杯上海交大智慧校园数据分析大赛”。这次数据分析大赛将开放校园数据，并启动数据训练营，鼓励同学和社会人士参与到大数据的学习和实践之中。</li>
+      <br>
+      <li>大赛面向国内高校的大学生以及社会各界人士，上海交大开放上万学生的校园卡消费数据和无线网路流量数据，让学生和社会人士都能够参与到校园数据的分析和探索，积累数据分析的实践经验，并探究大学生的行为规律，提出校园管理的政策建议。</li>
+      <br>
+      <li>本团队主要针对校园卡消费数据结合多源数据，分析了各食堂的客流及消费情况，用户消费倾向、行为，以及影响因素，并对食堂之后的客流及消费情况做出预测和评估。</li>
+      <br>
+      </ul>
+   </div>
+   <div class="center-block" style="width:80%;max-width:800px;font-size:1.1em;line-height:1.2em;">
+      <h3>数据集介绍</h3>
+      <ul style="text-align:left">
+      <li>校园卡一卡通数据集由上海交通大学一卡通的消费记录产生，消费包括了食堂餐饮、洗浴、超市购物等，是大学校园生活的另一个角度的体现。</li>
+      <br>
+      <li>气象数据包括：温度、降雨量、风速等，时间粒度为每10分钟一个采样点。</li>
+      <br>
+      <li>数据集由交大网络信息中心和OMNILab联合提供。</li>
+      <br>
+      <li>详情请点击：<a href="https://github.com/qiangsiwei/EMC_competition/blob/master/%E6%A0%A1%E5%9B%AD%E4%B8%80%E5%8D%A1%E9%80%9A%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BB%8B%E7%BB%8D.pdf">一卡通数据介绍</a>  <a href="https://github.com/qiangsiwei/EMC_competition/blob/master/%E9%97%B5%E8%A1%8C%E6%A0%A1%E5%8C%BA%E6%B0%94%E8%B1%A1%E6%95%B0%E6%8D%AE%E9%9B%86%E4%BB%8B%E7%BB%8D.pdf">气象数据介绍</a></li>
+      <br>
+      </ul>
+   </div>
+   <div class="center-block" style="width:80%;max-width:800px;font-size:1.1em;line-height:1.2em;">
+      <h3>整体框架</h3>
+      <ul style="text-align:left">
+      <li>本团队主要针对校园卡消费数据结合多源数据，分析了各食堂的客流及消费情况，数据存储于HDFS，计算基于Spark，整体框架及数据流图如下。</li>
+      <br>
+      </ul>
+      <img src="./pics/system.jpg" width="550"/>
+   </div>
+</div>
+</body>
+</html>

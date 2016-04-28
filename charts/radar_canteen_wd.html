@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+
+<body>
+    <div id="main" style="height:600px"></div>
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        require(
+            [
+                'echarts',
+                'echarts/chart/radar'
+            ],
+            function (ec) {
+                var myChart = ec.init(document.getElementById('main'));
+                var option = {
+				    // color : (function (){
+				    //     var zrColor = require('zrender/tool/color');
+				    //     return zrColor.getStepColors('lightgreen', 'green', 12);
+				    // })(),
+				    title : {
+				        text: '客流量',
+				        x:'right',
+				        y:'bottom'
+				    },
+				    tooltip : {
+				        trigger: 'item',
+				        backgroundColor : 'rgba(0,0,250,0.2)'
+				    },
+				    legend: {
+				        data: function (){
+				                var list = ["周一","周二","周三","周四","周五","周六","周日",];
+				                return list;
+				            }()
+				    },
+				    toolbox: {
+				        show : true,
+				        orient : 'vertical',
+				        y:'center',
+				        feature : {
+				            mark : {show: true},
+				            dataView : {show: true, readOnly: false},
+				            restore : {show: true},
+				            saveAsImage : {show: true}
+				        }
+				    },
+				   polar : [
+				       {
+				           indicator : [
+				               { text: '一餐', max: 400000},
+				               { text: '二餐', max: 400000},
+				               { text: '三餐', max: 400000},
+				               { text: '四餐', max: 400000},
+				               { text: '五餐', max: 200000},
+				               { text: '六餐', max: 200000},
+				               { text: '哈乐', max: 200000}
+				            ],
+				            center : ['50%', 300],
+				            radius : 200
+				        }
+				    ],
+				    calculable : false,
+				    series : (function (){
+				        var series = [
+				        	{data:[{name:"周一", value:[191534,369422,148456,126484,38071,20192,32911]}],name:'客流量',type:'radar',symbol:'none',itemStyle:{normal:{lineStyle:{width:1.5}},emphasis:{areaStyle:{color:'rgba(0,250,0,0.3)'}}}},
+				        	{data:[{name:"周二", value:[199620,361837,145735,132285,36826,20338,34594]}],name:'客流量',type:'radar',symbol:'none',itemStyle:{normal:{lineStyle:{width:1.5}},emphasis:{areaStyle:{color:'rgba(0,250,0,0.3)'}}}},
+				        	{data:[{name:"周三", value:[174674,357193,145331,126507,39948,19846,30705]}],name:'客流量',type:'radar',symbol:'none',itemStyle:{normal:{lineStyle:{width:1.5}},emphasis:{areaStyle:{color:'rgba(0,250,0,0.3)'}}}},
+				        	{data:[{name:"周四", value:[172859,344932,141959,123556,34934,18752,30880]}],name:'客流量',type:'radar',symbol:'none',itemStyle:{normal:{lineStyle:{width:1.5}},emphasis:{areaStyle:{color:'rgba(0,250,0,0.3)'}}}},
+				        	{data:[{name:"周五", value:[159013,306434,131442,123231,31584,16446,25995]}],name:'客流量',type:'radar',symbol:'none',itemStyle:{normal:{lineStyle:{width:1.5}},emphasis:{areaStyle:{color:'rgba(0,250,0,0.3)'}}}},
+				        	{data:[{name:"周六", value:[111600,235035,114818,112229,16622,7635,17689]}],name:'客流量',type:'radar',symbol:'none',itemStyle:{normal:{lineStyle:{width:1.5}},emphasis:{areaStyle:{color:'rgba(0,250,0,0.3)'}}}},
+				        	{data:[{name:"周日", value:[114030,252475,118156,111712,17831,7986,19687]}],name:'客流量',type:'radar',symbol:'none',itemStyle:{normal:{lineStyle:{width:1.5}},emphasis:{areaStyle:{color:'rgba(0,250,0,0.3)'}}}},
+				        ];
+				        return series;
+				    })()
+				};
+                myChart.setOption(option);
+			} 
+        );
+    </script>
+</body>

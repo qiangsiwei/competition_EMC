@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+    <div id="main" class="main" style='height:500px'></div>
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script src="http://echarts.baidu.com/doc/example/www2/js/echarts-all.js"></script>
+    <script type="text/javascript">
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        require(
+            [
+                'echarts',
+                'echarts/chart/scatter'
+            ],
+            function (ec) {
+                var myChart = ec.init(document.getElementById('main'));
+                option = {
+                    title : {
+                        text: '各窗口价格及用户滞留度',
+                        x: 'center'
+                    },
+                    tooltip : {
+                        trigger: 'axis',
+                        showDelay : 0, 
+                        axisPointer:{
+                            show: true,
+                            type : 'cross',
+                            lineStyle: {
+                                type : 'dashed',
+                                width : 1
+                            }
+                        }
+                    },
+                    legend: {
+                        x: 'center',
+                        y: 35,
+                        data:['一餐','二餐','三餐','四餐','五餐','六餐','哈乐']
+                    },
+                    toolbox: {
+                        orient : 'vertical',
+                        y:'center',
+                        show : true,
+                        feature : {
+                            mark : {show: true},
+                            dataZoom : {show: true},
+                            dataView : {show: true, readOnly: false},
+                            restore : {show: true},
+                            saveAsImage : {show: true}
+                        }
+                    },
+                    xAxis : [
+                        {
+                            name:'均价',
+                            type : 'value',
+                            scale:true,
+                            axisLabel : {
+                                formatter: '{value} 元'
+                            }
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            name:'滞留度',
+                            type : 'value',
+                            scale:true,
+                            axisLabel : {
+                                formatter: '{value} %'
+                            }
+                        }
+                    ],
+                    series : [
+                        {
+                            name:'一餐',
+                            type:'scatter',
+                            data: [
+                            [9.36,18.21],
+                            [6.81,13.13],
+                            [4.22,24.44],
+                            [5.51,5.97],
+                            [3.81,5.7],
+                            [8.41,19.17],
+                            [10.17,33.33],
+                            [8.47,7.5],
+                            [4.15,26.8],
+                            [4.35,25.99],
+                            [6.92,50.78],
+                            [12.85,8.57],
+                            [5.18,16.83],
+                            [1.38,12.5],
+                            ],
+                            // markPoint : {
+                            //     data : [
+                            //         {type : 'max', name: '最大值'},
+                            //         {type : 'min', name: '最小值'}
+                            //     ]
+                            // },
+                            markLine : {
+                                data : [
+                                    {type : 'average', name: '平均值'}
+                                ]
+                            }
+                        },
+                        {
+                            name:'二餐',
+                            type:'scatter',
+                            data: [
+                            [4.35,16.84],
+                            [5.4,23.81],
+                            [7.7,21.11],
+                            [3.73,23.04],
+                            [7.68,25.83],
+                            [15.57,19.2],
+                            [10.91,22.42],
+                            [9.62,18.51],
+                            [8.95,37.87],
+                            [2.0,0.0],
+                            [4.87,25.78],
+                            ],
+                            // markPoint : {
+                            //     data : [
+                            //         {type : 'max', name: '最大值'},
+                            //         {type : 'min', name: '最小值'}
+                            //     ]
+                            // },
+                            markLine : {
+                                data : [
+                                    {type : 'average', name: '平均值'}
+                                ]
+                            }
+                        },
+                        {
+                            name:'三餐',
+                            type:'scatter',
+                            data: [
+                            [6.33,39.4],
+                            [6.06,51.16],
+                            [18.69,10.56],
+                            [10.36,31.37],
+                            ],
+                            // markPoint : {
+                            //     data : [
+                            //         {type : 'max', name: '最大值'},
+                            //         {type : 'min', name: '最小值'}
+                            //     ]
+                            // },
+                            markLine : {
+                                data : [
+                                    {type : 'average', name: '平均值'}
+                                ]
+                            }
+                        },
+                        {
+                            name:'四餐',
+                            type:'scatter',
+                            data: [
+                            [7.51,8.73],
+                            [10.8,10.21],
+                            [12.63,6.24],
+                            [3.39,11.73],
+                            [12.4,3.31],
+                            [8.71,17.59],
+                            [6.66,15.0],
+                            [3.18,7.66],
+                            [7.94,27.13],
+                            [10.98,8.55],
+                            [7.97,13.56],
+                            [8.3,20.12],
+                            [10.62,10.49],
+                            [8.08,8.81],
+                            [10.38,13.96],
+                            [12.82,14.32],
+                            [9.82,8.68],
+                            [10.04,5.27],
+                            [7.19,14.1],
+                            [7.69,10.54],
+                            [53.06,6.71],
+                            ],
+                            // markPoint : {
+                            //     data : [
+                            //         {type : 'max', name: '最大值'},
+                            //         {type : 'min', name: '最小值'}
+                            //     ]
+                            // },
+                            markLine : {
+                                data : [
+                                    {type : 'average', name: '平均值'}
+                                ]
+                            }
+                        },
+                        {
+                            name:'五餐',
+                            type:'scatter',
+                            data: [
+                            [8.88,26.61],
+                            [8.33,25.36],
+                            [10.0,21.86],
+                            [52.1,5.08],
+                            ],
+                            // markPoint : {
+                            //     data : [
+                            //         {type : 'max', name: '最大值'},
+                            //         {type : 'min', name: '最小值'}
+                            //     ]
+                            // },
+                            markLine : {
+                                data : [
+                                    {type : 'average', name: '平均值'}
+                                ]
+                            }
+                        },
+                        {
+                            name:'六餐',
+                            type:'scatter',
+                            data: [
+                            [7.37,32.46],
+                            [28.94,4.04],
+                            [6.82,20.98],
+                            ],
+                            // markPoint : {
+                            //     data : [
+                            //         {type : 'max', name: '最大值'},
+                            //         {type : 'min', name: '最小值'}
+                            //     ]
+                            // },
+                            markLine : {
+                                data : [
+                                    {type : 'average', name: '平均值'}
+                                ]
+                            }
+                        },
+                        {
+                            name:'哈乐',
+                            type:'scatter',
+                            data: [
+                            [7.43,37.3],
+                            ],
+                            // markPoint : {
+                            //     data : [
+                            //         {type : 'max', name: '最大值'},
+                            //         {type : 'min', name: '最小值'}
+                            //     ]
+                            // },
+                            markLine : {
+                                data : [
+                                    {type : 'average', name: '平均值'}
+                                ]
+                            }
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+            }
+        );
+    </script>
+</body>

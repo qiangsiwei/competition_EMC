@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="height:400px"></div>
+    <!-- ECharts单文件引入 -->
+    <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+    <script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: 'http://echarts.baidu.com/build/dist'
+            }
+        });
+        
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie',
+                'echarts/chart/funnel'
+
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'),'macarons'); 
+                
+                var labelTop = {
+                    normal : {
+                        label : {
+                            show : true,
+                            position : 'center',
+                            formatter : '{b}',
+                            textStyle: {
+                                baseline : 'bottom'
+                            }
+                        },
+                        labelLine : {
+                            show : false
+                        }
+                    }
+                };
+                var labelFromatter = {
+                    normal : {
+                        label : {
+                            formatter : function (params){
+                                return 100 - params.value + '%'
+                            },
+                            textStyle: {
+                                baseline : 'top'
+                            }
+                        }
+                    },
+                }
+                var labelBottom = {
+                    normal : {
+                        color: '#ccc',
+                        label : {
+                            show : true,
+                            position : 'center'
+                        },
+                        labelLine : {
+                            show : false
+                        }
+                    },
+                    emphasis: {
+                        color: 'rgba(0,0,0,0)'
+                    }
+                };
+                var radius = [40, 55];
+                var option = {
+                    legend: {
+                        x : 'center',
+                        y : 'center',
+                        data:[
+                            '淮阳快餐','梦圆面包房','烤肉','中式点心','三餐时光咖啡',
+                            '西餐厅', '粉面饭', '海派食府', '六餐东一楼餐厅', '川菜'
+                        ]
+                    },
+                    title : {
+                        text: '各个窗口女生消费比例',
+                        x: 'center'
+                    },
+                    toolbox: {
+                        show : true,
+                        feature : {
+                            dataView : {show: true, readOnly: false},
+                            magicType : {
+                                show: true, 
+                                type: ['pie'],
+                                option: {
+                                    funnel: {
+                                        width: '20%',
+                                        height: '30%',
+                                        itemStyle : {
+                                            normal : {
+                                                label : {
+                                                    formatter : function (params){
+                                                        return 'other\n' + params.value + '%\n'
+                                                    },
+                                                    textStyle: {
+                                                        baseline : 'middle'
+                                                    }
+                                                }
+                                            },
+                                        } 
+                                    }
+                                }
+                            },
+                            restore : {show: true},
+                            saveAsImage : {show: true}
+                        }
+                    },
+                    series : [
+                        {
+                            type : 'pie',
+                            center : ['10%', '30%'],
+                            radius : radius,
+                            x: '0%', // for funnel
+                            itemStyle : labelFromatter,
+                            data : [
+                                {name:'Male', value:65, itemStyle : labelBottom},
+                                {name:'淮阳快餐', value:35,itemStyle : labelTop}
+                            ]
+                        },
+                        {
+                            type : 'pie',
+                            center : ['30%', '30%'],
+                            radius : radius,
+                            x:'20%', // for funnel
+                            itemStyle : labelFromatter,
+                            data : [
+                                {name:'Male', value:73, itemStyle : labelBottom},
+                                {name:'梦圆面包房', value:27,itemStyle : labelTop}
+                            ]
+                        },
+                        {
+                            type : 'pie',
+                            center : ['50%', '30%'],
+                            radius : radius,
+                            x:'40%', // for funnel
+                            itemStyle : labelFromatter,
+                             data : [
+                                {name:'Male', value:80, itemStyle : labelBottom},
+                                {name:'烤肉', value:20,itemStyle : labelTop}
+                            ]
+                        },
+                        {
+                            type : 'pie',
+                            center : ['70%', '30%'],
+                            radius : radius,
+                            x:'60%', // for funnel
+                            itemStyle : labelFromatter,
+                            data : [
+                                {name:'Male', value:63, itemStyle : labelBottom},
+                                {name:'中式点心', value:37,itemStyle : labelTop}
+                            ]
+                        },
+                        {
+                            type : 'pie',
+                            center : ['90%', '30%'],
+                            radius : radius,
+                            x:'80%', // for funnel
+                            itemStyle : labelFromatter,
+                            data : [
+                                {name:'Male', value:50, itemStyle : labelBottom},
+                                {name:'三餐时光咖啡', value:50,itemStyle : labelTop}
+                            ]
+                        },
+                        {
+                            type : 'pie',
+                            center : ['10%', '70%'],
+                            radius : radius,
+                            y: '55%',   // for funnel
+                            x: '0%',    // for funnel
+                            itemStyle : labelFromatter,
+                            data : [
+                                {name:'Male', value:74, itemStyle : labelBottom},
+                                {name:'西餐厅', value:26,itemStyle : labelTop}
+                            ]
+                        },
+                        {
+                            type : 'pie',
+                            center : ['30%', '70%'],
+                            radius : radius,
+                            y: '55%',   // for funnel
+                            x:'20%',    // for funnel
+                            itemStyle : labelFromatter,
+                            data : [
+                                {name:'Male', value:60, itemStyle : labelBottom},
+                                {name:'粉面饭', value:40,itemStyle : labelTop}
+                            ]
+                        },
+                        {
+                            type : 'pie',
+                            center : ['50%', '70%'],
+                            radius : radius,
+                            y: '55%',   // for funnel
+                            x:'40%', // for funnel
+                            itemStyle : labelFromatter,
+                            data : [
+                                {name:'Male', value:65, itemStyle : labelBottom},
+                                {name:'海派食府', value:35,itemStyle : labelTop}
+                            ]
+                        },
+                        {
+                            type : 'pie',
+                            center : ['70%', '70%'],
+                            radius : radius,
+                            y: '55%',   // for funnel
+                            x:'60%', // for funnel
+                            itemStyle : labelFromatter,
+                            data : [
+                                {name:'Male', value:73, itemStyle : labelBottom},
+                                {name:'六餐东一楼餐厅', value:27,itemStyle : labelTop}
+                            ]
+                        },
+                        {
+                            type : 'pie',
+                            center : ['90%', '70%'],
+                            radius : radius,
+                            y: '55%',   // for funnel
+                            x:'80%', // for funnel
+                            itemStyle : labelFromatter,
+                            data : [
+                                {name:'Male', value:75, itemStyle : labelBottom},
+                                {name:'川菜', value:25,itemStyle : labelTop}
+                            ]
+                        }
+                    ]
+                };
+                    
+                    
+                    
+        
+                // 为echarts对象加载数据 
+                myChart.setOption(option); 
+            }
+        );
+    </script>
+</body>
