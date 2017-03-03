@@ -16,3 +16,21 @@ http://data.sjtu.edu.cn/dataset/emc-competition
 
 可视化地址
 http://htmlpreview.github.io/?https://github.com/qiangsiwei/competition_EMC/blob/master/html/index.html
+
+![Alt Text](https://raw.githubusercontent.com/qiangsiwei/competition_EMC/master/figures/01.png)
+
+![Alt Text](https://raw.githubusercontent.com/qiangsiwei/competition_EMC/master/figures/02.png)
+
+![Alt Text](https://raw.githubusercontent.com/qiangsiwei/competition_EMC/master/figures/03.png)
+
+![Alt Text](https://raw.githubusercontent.com/qiangsiwei/competition_EMC/master/figures/04.png)
+
+![Alt Text](https://raw.githubusercontent.com/qiangsiwei/competition_EMC/master/figures/05.png)
+
+![Alt Text](https://raw.githubusercontent.com/qiangsiwei/competition_EMC/master/figures/06.png)
+
+![Alt Text](https://raw.githubusercontent.com/qiangsiwei/competition_EMC/master/figures/07.png)
+
+![Alt Text](https://raw.githubusercontent.com/qiangsiwei/competition_EMC/master/figures/08.png)
+
+![Alt Text](https://raw.githubusercontent.com/qiangsiwei/competition_EMC/master/figures/09.png)
