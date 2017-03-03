@@ -15,4 +15,4 @@ https://github.com/qiangsiwei/competition_EMC
 http://data.sjtu.edu.cn/dataset/emc-competition
 
 可视化地址
-http://htmlpreview.github.com/?https://github.com/qiangsiwei/EMC_competition/blob/master/index.html
+http://htmlpreview.github.io/?https://github.com/qiangsiwei/competition_EMC/blob/master/html/index.html
